@@ -5,7 +5,7 @@ import sys
 
 
 def main():
-    os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'schoolmanagement.settings')
+    os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'student_management_system.settings')
     try:
         from django.core.management import execute_from_command_line
     except ImportError as exc:
