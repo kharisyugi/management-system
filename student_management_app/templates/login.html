@@ -1,68 +1,120 @@
 {% extends 'base.html' %}
-{% load static %} 
+{% load static %}
 
 {% block content %}
 
-    <body class="hold-transition login-page">
-<div class="login-box">
-  <div class="login-logo">
-    <a href="{% url 'login' %}"><b>Student </b>Management System</a>
-  </div>
-  <!-- /.login-logo -->
-  <div class="card">
-    <div class="card-body login-card-body">
-      <p class="login-box-msg">Sign in to Student Management System</p>
-
-      <form action="{% url 'doLogin' %}" method="POST">
-      {% csrf_token %}
-        <div class="input-group mb-3">
-          <input type="email" class="form-control" placeholder="Email" name="email">
-          <div class="input-group-append">
-            <div class="input-group-text">
-              <span class="fas fa-envelope"></span>
-            </div>
-          </div>
-        </div>
-        <div class="input-group mb-3">
-          <input type="password" class="form-control" placeholder="Password" name="password">
-          <div class="input-group-append">
-            <div class="input-group-text">
-              <span class="fas fa-lock"></span>
-            </div>
-          </div>
-        </div>
-
-          <div class="col-12">
-            <button type="submit" class="btn btn-primary btn-block">Sign In</button>
-          </div>
-
-          {% comment %} <div class="col-12 text-center">
-            <a href="{% url 'password_reset' %}">Reset Password</a>
-          </div>  {% endcomment %}
-
-          {% comment %} Display Messages {% endcomment %}
-          {% if messages %}
-          <div class="col-12">
-            {% for message in messages %}
-              {% if message.tags == "error" %}
-                <div class="alert alert-danger alert-dismissible fade show" role="alert" style="margin-top: 10px;">
-                  {{ message }}
-                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
+<body>
+  <div class="container-scroller">
+    <div class="container-fluid page-body-wrapper full-page-wrapper">
+      <div class="content-wrapper d-flex align-items-center auth">
+        <div class="row flex-grow">
+          <div class="col-lg-4 mx-auto">
+            <div class="auth-form-light text-center p-5">
+              <div class="brand-logo">
+                <img src="{% static 'admin/assets/images/UNU.png' %}">
+              </div>
+              <h4>Management System Student</h4>
+              <h6 class="font-weight-light">Sign in to continue.</h6>
+              <form class="pt-3" action="{% url 'doLogin' %}" method="POST">
+                {% csrf_token %}
+                <div class="form-group">
+                  <input type="email" name="email" class="form-control form-control-lg" placeholder="email">
                 </div>
-              {% endif %}
-            {% endfor %}
+                <div class="form-group">
+                  <input type="password" name="password" class="form-control form-control-lg" placeholder="Password">
+                </div>
+                <div class="mt-3">
+                  <input class="btn btn-block btn-gradient-primary btn-lg font-weight-medium auth-form-btn"
+                    value="SIGN IN" type="submit">
+                </div>
+                
+                {% comment %} 
+                <div class="my-2 d-flex justify-content-between align-items-center">
+                  <a href="{% url 'password_reset' %}" class="auth-link text-black">Forgot password?</a>
+                </div>
+                {% comment %} Display Messages {% endcomment %}
+                {% if messages %}
+                <div class="col-12">
+                  {% for message in messages %}
+                  {% if message.tags == "error" %}
+                  <div class="alert alert-danger alert-dismissible fade show" role="alert" style="margin-top: 10px;">
+                    {{ message }}
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  {% endif %}
+                  {% endfor %}
+                </div>
+                {% endif %}
+              </form>
+            </div>
           </div>
-          {% endif %}
-
-          <!-- /.col -->
         </div>
-      </form>
-
-
+      </div>
+      <!-- content-wrapper ends -->
+    </div>
+    <!-- page-body-wrapper ends -->
   </div>
-</div>
-<!-- /.login-box -->
 
-{% endblock %}
+  <!-- <body class="hold-transition login-page">
+    <div class="login-box">
+      <div class="login-logo">
+        <a href="{% url 'login' %}"><b>Student </b>Management System</a>
+      </div>
+      <div class="card">
+        <div class="card-body login-card-body">
+          <p class="login-box-msg">Sign in to Student Management System</p>
+
+          <form action="{% url 'doLogin' %}" method="POST">
+            {% csrf_token %}
+            <div class="input-group mb-3">
+              <input type="email" class="form-control" placeholder="Email" name="email">
+              <div class="input-group-append">
+                <div class="input-group-text">
+                  <span class="fas fa-envelope"></span>
+                </div>
+              </div>
+            </div>
+            <div class="input-group mb-3">
+              <input type="password" class="form-control" placeholder="Password" name="password">
+              <div class="input-group-append">
+                <div class="input-group-text">
+                  <span class="fas fa-lock"></span>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-12">
+              <button type="submit" class="btn btn-primary btn-block">Sign In</button>
+            </div>
+
+            {% comment %} <div class="col-12 text-center">
+              <a href="{% url 'password_reset' %}">Reset Password</a>
+            </div> {% endcomment %}
+
+            {% comment %} Display Messages {% endcomment %}
+            {% if messages %}
+            <div class="col-12">
+              {% for message in messages %}
+              {% if message.tags == "error" %}
+              <div class="alert alert-danger alert-dismissible fade show" role="alert" style="margin-top: 10px;">
+                {{ message }}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              {% endif %}
+              {% endfor %}
+            </div>
+            {% endif %}
+
+        </div>
+        </form>
+
+
+      </div>
+    </div> -->
+  <!-- /.login-box -->
+
+  {% endblock %}
